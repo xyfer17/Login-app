@@ -1,9 +1,14 @@
 import React from 'react'
+import avatar from '../assets/147133.png'
 import { Link } from 'react-router-dom'
+import { Toaster } from 'react-hot-toast';
 
 const Username = () => {
   return (
     <div className="container mx-auto">
+      
+      <Toaster position='top-center' reverseOrder={false}></Toaster>
+
       <div className='flex justify-center items-center h-screen'>
         <div>
           <div className="title flex flex-col items-center">
@@ -14,7 +19,7 @@ const Username = () => {
           </div>
           <form className='py-1'>
             <div className='profile flex justify-center py-4'>
-              <img src='' alt='avatar'/>
+              <img src={avatar}  alt='avatar'/>
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
