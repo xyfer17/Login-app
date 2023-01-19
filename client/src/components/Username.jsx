@@ -24,8 +24,8 @@ const Username = () => {
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
-              <input type="text" placeholder='username'/>
-              <button type='submit'> Let's go</button>
+              <input className={styles.textbox} type="text" placeholder='username'/>
+              <button className={styles.btn} type='submit'> Let's go</button>
             </div>
 
             <div className="text-center py-4">
