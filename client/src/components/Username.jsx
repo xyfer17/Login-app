@@ -1,10 +1,28 @@
 import React from 'react'
 import avatar from '../assets/147133.png'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate} from 'react-router-dom'
 import { Toaster } from 'react-hot-toast';
+import {useFormik} from 'formik';
+import { usernameValidate } from '../helper/validate';
 import styles from '../styles/Username.module.css'
 
 const Username = () => {
+
+    const navigate = useNavigate();
+
+    const formik = useFormik({
+      initialValues:{
+        username:'example123'
+      },
+      validate: usernameValidate,
+      validateOnBlur: false,
+      validateOnChange: false,
+      onSubmit: async values =>{
+        navigate('/password')
+      }
+    })
+
+
   return (
     <div className="container mx-auto">
       
@@ -18,13 +36,13 @@ const Username = () => {
               Explore More by connecting with us.
             </span>
           </div>
-          <form className='py-1'>
+          <form className='py-1' onSubmit={formik.handleSubmit}>
             <div className='profile flex justify-center py-4'>
               <img src={avatar} className={styles.profile_img} alt='avatar'/>
             </div>
 
             <div className="textbox flex flex-col items-center gap-6">
-              <input className={styles.textbox} type="text" placeholder='username'/>
+              <input {...formik.getFieldProps('username')} className={styles.textbox} type="text" placeholder='username'/>
               <button className={styles.btn} type='submit'> Let's go</button>
             </div>
 
